@@ -7,6 +7,7 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.Toolbar;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -17,10 +18,9 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import timber.log.Timber;
-
 import static android.view.View.INVISIBLE;
 import static android.view.View.VISIBLE;
+import static timber.log.Timber.d;
 
 /*
 A sample to use in subclasses
@@ -73,7 +73,7 @@ public abstract class HeaderBehavior extends CoordinatorLayout.Behavior<ViewGrou
 
     @Override
     public boolean onDependentViewChanged(CoordinatorLayout coordinator, ViewGroup child, View dependency) {
-        Timber.d("started");
+        d("started");
 
         if (parent == null) init(coordinator, dependency);
 
@@ -99,6 +99,7 @@ public abstract class HeaderBehavior extends CoordinatorLayout.Behavior<ViewGrou
         int offset = -behavior.getTopAndBottomOffset();
         int maxScroll = appBarLayout.getTotalScrollRange();
         ratio = (float) (maxScroll - offset) / (float) maxScroll;
+        d("maxScroll=%d, offset=%d, ratio=%f", maxScroll, offset, ratio);
     }
 
     private void init(CoordinatorLayout coordinator, View appBar) {
@@ -124,6 +125,7 @@ public abstract class HeaderBehavior extends CoordinatorLayout.Behavior<ViewGrou
     private void measureOffset() {
         offset = new int[2];
         parent.getLocationOnScreen(offset);
+        d("offset: %d; %d", offset[0], offset[1]);
     }
 
     private void moveFloatToolbarDown() {
@@ -135,6 +137,9 @@ public abstract class HeaderBehavior extends CoordinatorLayout.Behavior<ViewGrou
 
         int translationY = appBarExpBottom - floatToolbarRect.bottom;
         floatToolbar.setTranslationY(translationY);
+
+        d("floatToolbarRect: %s, pinToolbarRect: %s, appBarExpBottom: %d, translationY: %d", floatToolbarRect, pinToolbarRect, appBarExpBottom, translationY);
+
         return;
     }
 
@@ -145,7 +150,7 @@ public abstract class HeaderBehavior extends CoordinatorLayout.Behavior<ViewGrou
         int left = pos[0] - offset[0];
         int top = pos[1] - offset[1];
         Rect rect = new Rect(left, top, left + view.getWidth(), top + view.getHeight());
-        Timber.d("view=%s, rect=%s", view, rect);
+        d("view=%s, rect=%s", view, rect);
         return rect;
     }
 
@@ -202,7 +207,7 @@ public abstract class HeaderBehavior extends CoordinatorLayout.Behavior<ViewGrou
         }
 
         private float calc(float start, float end) {
-            return (int) (start + (end - start) * ratio);
+            return start + (end - start) * ratio;
         }
 
         private void refresh(float ratio) {
@@ -212,13 +217,13 @@ public abstract class HeaderBehavior extends CoordinatorLayout.Behavior<ViewGrou
             params.width = calc(rectPin.width(), rectExp.width());
             params.leftMargin = calc(rectPin.left, rectExp.left);
             params.topMargin = calc(rectPin.top, rectExp.top);
-            tvFloat.setTextSize(calc(textSizePin, textSizeExp));
+            tvFloat.setTextSize(TypedValue.COMPLEX_UNIT_PX, calc(textSizePin, textSizeExp));
             tvFloat.setMaxLines(calc(linesPin, linesExp));
 
             tvPin.setVisibility(ratio == 0 ? VISIBLE : INVISIBLE);
             tvFloat.setVisibility(ratio > 0 ? VISIBLE : INVISIBLE);
 
-            Timber.d("%s", this);
+            d("%s", this);
         }
 
         @Override
