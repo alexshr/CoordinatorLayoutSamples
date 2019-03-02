@@ -20,12 +20,13 @@
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:toolbarId="@+id/toolbar">
 
-            <ImageView
+            <com.otus.alexshr.sample.SquareImageView
                 android:id="@+id/collapsing_image"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/see"
+                app:hwRatio="@dimen/hwRatio"
                 app:layout_collapseMode="parallax"
                 tools:ignore="ContentDescription" />
 
@@ -93,6 +94,7 @@
             android:text="@string/toolbar_title"
             android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse"
             android:textSize="@dimen/float_title_text_size"
+            android:maxLines="@string/title_max_lines"
             tools:text="Title" />
 
         <TextView
@@ -104,6 +106,7 @@
             android:text="@string/toolbar_subtitle"
             android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Subtitle.Inverse"
             android:textSize="@dimen/float_subtitle_text_size"
+            android:maxLines="@string/subtitle_max_lines"
             tools:ignore="PrivateResource"
             tools:text="Subtitle" />
 

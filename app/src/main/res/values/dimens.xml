@@ -1,7 +1,5 @@
 <resources>
 
-    <item name="image_hwRatio" format="float" type="dimen">0.67</item>
-
     <dimen name="app_bar_height">180dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="text_margin">16dp</dimen>
@@ -13,4 +11,5 @@
     <dimen name="float_subtitle_text_size">16sp</dimen>
     <dimen name="card_header_padding">8dp</dimen>
     <dimen name="card_header_elevation">-1dp</dimen>
+
 </resources>

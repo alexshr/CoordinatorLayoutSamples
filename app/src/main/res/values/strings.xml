@@ -90,9 +90,9 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <string name="action_settings">Settings</string>
-    <string name="toolbar_title">The title can have unlimited length, unlimited number of lines, any location and text appearance.</string>
+    <string name="toolbar_title">The title can have unlimited length, unlimited number of lines, any location and text appearance. he title can have unlimited length, unlimited number of lines, any location and text appearance.he title can have unlimited length, unlimited number of lines, any location and text appearance.</string>
 
-    <string name="toolbar_subtitle">This subtitle can also have unlimited length, unlimited number of lines, any location and text appearance.</string>
+    <string name="toolbar_subtitle">This subtitle can also have unlimited length, unlimited number of lines, any location and text appearance. This subtitle can also have unlimited length, unlimited number of lines, any location and text appearance. This subtitle can also have unlimited length, unlimited number of lines, any location and text appearance.</string>
     <string name="title_activity_header_hiden">HeaderHidenActivity</string>
     <string name="title_activity_header_hidden">HeaderHiddenActivity</string>
     <string name="header">HEADER</string>
