@@ -1,3 +1,5 @@
 Activities (HeaderTransitionActivity and HeaderHiddenActivity) contain different samples and should be runned separately by android studio run configuration.
 
 HeaderTransitionActivity sample use my custom behaviour for toolbar title and subtitle transition with CollapsingToolbarLayout.
+
+Использую свой custom behaviour, который создал недавно для другого учебного проекта. Задача была анимировать toolbar title и subtitle при скроллинге CollapsingToolbarLayout (например, title - длинное название книги, а subtitle - автор, где когда выпущено и т.д.). По умолчанию система умеет анимировать только title, и без какой-либо кастомизации. В данном примере я обозначаю в layout title и subtitle отдельно для expanded и collapsed cостояний. В collapsed состоянии их вид обычно определен стандартно, но для expanded состояния мы можем поместить title и subtitle в любом месте, с любым размером текста и числом строк (но должны помещаться в appbarlayout). Ничего подобного реально работающего я в инете не нашел и поэтому сделал сам. В дальнейшем напрашивается CustomView
